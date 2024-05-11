@@ -38,8 +38,8 @@ export default function Home() {
   const [validation, setValidation] = useState({ isValid: true, unaccounted: 0 });
 
   useEffect(() => {
-    const totalBuyIn = players.reduce((total, player) => total + (player.buyIn || 0), 0);
-    const totalFinalAmount = players.reduce((total, player) => total + (player.finalAmount || 0), 0);
+    const totalBuyIn = players.reduce((total, player) => total + Number(player.buyIn || 0), 0);
+    const totalFinalAmount = players.reduce((total, player) => total + Number(player.finalAmount || 0), 0);
     const unaccounted = totalBuyIn - totalFinalAmount;
 
     setValidation({ isValid: unaccounted === 0, unaccounted });
@@ -96,7 +96,7 @@ export default function Home() {
         <Button type="button" onClick={handleAddPlayer}>
           Add Player
         </Button>
-        <Button type="submit">End Game</Button>
+        <Button type="submit" disabled={!validation.isValid}>End Game</Button>
       </Box>
     </MainLayout>
   );
