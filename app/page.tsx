@@ -6,6 +6,7 @@ import MainLayout from './components/MainLayout';
 import PlayerList from './components/PlayerList';
 import ValidationMessage from './components/ValidationMessage';
 import { Box, Button, Input } from '@mui/joy';
+import Image from 'next/image';
 
 type PlayerData = {
   name: string;
@@ -86,6 +87,12 @@ export default function Home() {
           maxWidth: 800,
         }}
       >
+        <Image
+          src="/pokernight.png"
+          alt="Poker Night Logo"
+          width={200}
+          height={200}
+        />
         <Controller
           name="date"
           control={control}
