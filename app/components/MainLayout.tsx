@@ -18,7 +18,7 @@ const MainLayout = ({ children }: MainLayoutProps) => (
         padding: 2,
       }}
     >
-      <Typography level="h2">Poker Night - {new Date().toLocaleDateString()}</Typography>
+      <Typography level="h2">Poker Night</Typography>
       {children}
     </Box>
   </CssVarsProvider>
