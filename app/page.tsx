@@ -10,8 +10,8 @@ import Image from 'next/image';
 
 type PlayerData = {
   name: string;
-  buyIn: number;
-  finalAmount: number;
+  buyIn?: number;
+  finalAmount?: number;
 };
 
 type FormData = {
@@ -24,8 +24,8 @@ export default function Home() {
     defaultValues: {
       date: new Date().toISOString().split('T')[0],
       players: [
-        { name: '', buyIn: 0, finalAmount: 0 },
-        { name: '', buyIn: 0, finalAmount: 0 },
+        { name: '' },
+        { name: '' },
       ],
     },
   });
@@ -70,7 +70,7 @@ export default function Home() {
   };
 
   const handleAddPlayer = () => {
-    append({ name: '', buyIn: 0, finalAmount: 0 });
+    append({ name: '' });
   };
 
   return (
@@ -98,7 +98,7 @@ export default function Home() {
           control={control}
           render={({ field }) => <Input {...field} type="date" required />}
         />
-        <PlayerList fields={fields} control={control} remove={remove} />
+        <PlayerList fields={fields} control={control} remove={remove} updateValidation={(isValid, unaccounted) => setValidation({ isValid, unaccounted })} />
         <ValidationMessage isValid={validation.isValid} unaccounted={validation.unaccounted} />
         <Button type="button" onClick={handleAddPlayer}>
           Add Player
