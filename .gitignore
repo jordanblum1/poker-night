@@ -37,3 +37,6 @@ next-env.d.ts
 
 #auth files
 poker-tracker-google-auth.json
+
+#session files
+.sessions/
